@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { JourneyPicker } from '../JourneyPicker';
 import { JourneyDetail } from '../JourneyDetail/journeydetail';
-import { SelectedSeat } from '../SelectedSeat/selectedseat';
+import { SeatPicker } from '../SeatPicker/seatpicker';
 
 export const Home = () => {
   const [journey, setJourney] = useState(null);
@@ -12,6 +12,8 @@ export const Home = () => {
     console.log('Vypisuji parametr:', journey);
     setJourney(journey);
   };
+
+  console.log('Journey data:', journey);
 
   const handleBuy = () => {
     console.log('Funguju');
@@ -41,7 +43,9 @@ export const Home = () => {
     <main>
       <JourneyPicker onJourneyChange={handleJourneyChange} />
       {journey && <JourneyDetail journey={journey} />}
-      {journey && <SelectedSeat number={journey.autoSeat} />}
+      {journey && (
+        <SeatPicker seats={journey.seats} journeyId={journey.journeyId} />
+      )}
       {journey && (
         <div className="controls container">
           <button className="btn btn--big" type="button" onClick={handleBuy}>
