@@ -41,15 +41,12 @@ export const JourneyPicker = ({ onJourneyChange }) => (
           </select>
         </label>
         <div className="journey-picker__controls">
-          <button 
-            className="btn" 
-            type="submit"
-          > 
+          <button className="btn" type="submit">
             Vyhledat spoj
           </button>
         </div>
       </form>
-      <img className="journey-picker__map" src="/map.svg" />
+      <img className="journey-picker__map" src={mapImage} />
     </div>
   </div>
 );
