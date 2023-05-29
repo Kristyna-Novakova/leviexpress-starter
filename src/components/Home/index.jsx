@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { JourneyPicker } from '../JourneyPicker';
 import { JourneyDetail } from '../JourneyDetail/journeydetail';
 import { SeatPicker } from '../SeatPicker/seatpicker';
+import './style.css';
 
 export const Home = () => {
   const [journey, setJourney] = useState(null);
