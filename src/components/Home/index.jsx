@@ -6,11 +6,13 @@ import { SeatPicker } from '../SeatPicker/seatpicker';
 
 export const Home = () => {
   const [journey, setJourney] = useState(null);
+  const [selectedSeat, setSelectedSeat] = useState(null);
   const navigate = useNavigate();
 
   const handleJourneyChange = (journey) => {
     console.log('Vypisuji parametr:', journey);
     setJourney(journey);
+    setSelectedSeat(journey.autoSeat);
   };
 
   console.log('Journey data:', journey);
@@ -44,7 +46,11 @@ export const Home = () => {
       <JourneyPicker onJourneyChange={handleJourneyChange} />
       {journey && <JourneyDetail journey={journey} />}
       {journey && (
-        <SeatPicker seats={journey.seats} journeyId={journey.journeyId} />
+        <SeatPicker
+          seats={journey.seats}
+          journeyId={journey.journeyId}
+          selectedSeat={selectedSeat}
+        />
       )}
       {journey && (
         <div className="controls container">

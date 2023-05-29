@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 import { Seat } from '../Seat/seat';
 
-export const SeatRow = ({ row }) => {
+export const SeatRow = ({ row, rowSelectedSeat }) => {
   return (
     <div className="seat-row">
       {row.map((seat) => (
@@ -10,6 +10,7 @@ export const SeatRow = ({ row }) => {
           key={seat.number}
           number={seat.number}
           isOccupied={seat.isOccupied}
+          isSelected={seat.number === rowSelectedSeat}
         />
       ))}
     </div>
