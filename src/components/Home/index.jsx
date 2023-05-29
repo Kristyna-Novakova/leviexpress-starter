@@ -6,13 +6,15 @@ import { SeatPicker } from '../SeatPicker/seatpicker';
 
 export const Home = () => {
   const [journey, setJourney] = useState(null);
-  const [selectedSeat, setSelectedSeat] = useState(null);
+  // const [selectedSeat, setSelectedSeat] = useState(null);
+  const [userSeat, setUserSeat] = useState(null);
   const navigate = useNavigate();
 
   const handleJourneyChange = (journey) => {
     console.log('Vypisuji parametr:', journey);
     setJourney(journey);
-    setSelectedSeat(journey.autoSeat);
+    // setSelectedSeat(journey.autoSeat);
+    setUserSeat(journey.autoSeat);
   };
 
   console.log('Journey data:', journey);
@@ -28,7 +30,7 @@ export const Home = () => {
       },
       body: JSON.stringify({
         action: 'create',
-        seat: journey.autoSeat,
+        seat: userSeat,
         journeyId: journey.journeyId,
       }),
     })
@@ -49,7 +51,8 @@ export const Home = () => {
         <SeatPicker
           seats={journey.seats}
           journeyId={journey.journeyId}
-          selectedSeat={selectedSeat}
+          selectedSeat={userSeat}
+          onSeatSelected={setUserSeat}
         />
       )}
       {journey && (

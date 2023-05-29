@@ -2,7 +2,11 @@ import React from 'react';
 import './style.css';
 import { Seat } from '../Seat/seat';
 
-export const SeatRow = ({ row, rowSelectedSeat }) => {
+export const SeatRow = ({ row, selectedSeat, onSeatSelected }) => {
+  const handleSeatSelected = (number) => {
+    onSeatSelected(number);
+  };
+
   return (
     <div className="seat-row">
       {row.map((seat) => (
@@ -10,7 +14,8 @@ export const SeatRow = ({ row, rowSelectedSeat }) => {
           key={seat.number}
           number={seat.number}
           isOccupied={seat.isOccupied}
-          isSelected={seat.number === rowSelectedSeat}
+          isSelected={selectedSeat === seat.number}
+          onSelect={handleSeatSelected}
         />
       ))}
     </div>
